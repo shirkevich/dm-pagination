@@ -28,6 +28,13 @@ require 'dm-pager/defaults'
 require 'dm-pager/pagination'
 require 'dm-pager/pager'
 require 'dm-pager/helpers'
+require 'dm-pager/array'
+
+#--
+# Array
+#++
+
+Array.send :include, DataMapper::ArrayPagination 
 
 #--
 # DataMapper
