@@ -1,8 +1,7 @@
 module DataMapper
-  module ArrayPagination
-     attr_accessor :pager
-  
-     def page page = nil, options = {}
+  module ArrayPagination 
+    include DataMapper::Pagination  
+    def page page = nil, options = {}
       options, page = page, nil if page.is_a? Hash
       page ||= pager_option :page, options
       options.delete :page
@@ -14,14 +13,6 @@ module DataMapper
       paginated_array = self[from..to] || []
       paginated_array.pager = DataMapper::Pager.new(options)
       paginated_array
-    end
-    
-    private
-    
-    def pager_option key, options = {}
-      a = options.delete key.to_sym
-      b = options.delete key.to_s
-      a || b || Pagination.defaults[key.to_sym]
     end
   end
 end
