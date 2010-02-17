@@ -40,7 +40,7 @@ Array.send :include, DataMapper::ArrayPagination
 # DataMapper
 #++
 
-DataMapper::Model.send :include, DataMapper::Pagination
+DataMapper::Model.append_extensions DataMapper::Pagination
 DataMapper::Collection.send :include, DataMapper::Pagination
 DataMapper::Query.send :include, DataMapper::Pagination
 
